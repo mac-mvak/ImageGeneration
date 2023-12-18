@@ -39,7 +39,7 @@ dis = Discriminator(**cfg["model"]["args"])
 dis = dis.to(device)
 
 opt_gen = torch.optim.Adam(params=gen.parameters(), **cfg['optim_params'])
-opt_dis = torch.optim.Adam(params=gen.parameters(), **cfg['optim_params'])
+opt_dis = torch.optim.Adam(params=dis.parameters(), **cfg['optim_params'])
 
 scheduler_gen = torch.optim.lr_scheduler.ExponentialLR(opt_gen, gamma=0.999)
 scheduler_dis = torch.optim.lr_scheduler.ExponentialLR(opt_dis, gamma=0.999)
