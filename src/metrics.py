@@ -42,7 +42,7 @@ def create_gen_folder(gen, nz, device, const_z):
     real_ims = []
     gen_ims = []
     used = 0
-    for data in tqdm(dataloader):
+    for data in dataloader:
         ims = data[0]
         real_ims.append(ims.detach())
         z = const_z[used:used+ims.shape[0], ...]

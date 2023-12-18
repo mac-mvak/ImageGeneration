@@ -18,6 +18,4 @@ def save_model(i, gen, dis, opt_gen, opt_dis, cfg):
             "cfg": cfg
         }
     torch.save(state, name_save)
-<<<<<<< HEAD
-=======
->>>>>>> 57f1974b14ccbf8c2446cd075152b42117b80525
+    print(f'model_saved epoch={i}')

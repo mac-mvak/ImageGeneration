@@ -55,7 +55,7 @@ D_losses = []
 epochs = cfg['trainer']['epochs']
 len_epoch = cfg['trainer']['len_epoch']
 lat_size = cfg['model']['args']['latent_channels']
-const_z = torch.randn(2000, lat_size, device=device)
+const_z = torch.randn(2000, lat_size, 1, 1, device=device)
 fid_metric = FID().to(device)
 
 
