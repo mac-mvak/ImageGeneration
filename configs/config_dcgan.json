@@ -1,0 +1,21 @@
+{
+    "model": {
+        "arch": "dcgan",
+        "args": {
+            "photo_channels": 3,
+            "latent_channels": 100,
+            "gen_maps": 64,
+            "dis_maps": 64
+        }
+    },
+    "optim_params": {
+        "lr": 2e-4,
+        "betas": [0.5, 0.999]
+    },
+
+    "trainer" : {
+        "epochs": 100,
+        "len_epoch": 20,
+        "save_path": "saved/dcgan/1"
+    }
+}

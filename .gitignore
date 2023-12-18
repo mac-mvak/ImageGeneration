@@ -1,0 +1,5 @@
+wandb
+data
+saved
+__pycache__
+training.ipynb
