@@ -12,6 +12,7 @@ import torch
 
 dataroot='data'
 image_size=64
+torch.use_deterministic_algorithms(False) 
 with open('configs/config_dcgan.json') as f:
     cfg = json.load(f)
 
@@ -46,7 +47,7 @@ scheduler_gen = torch.optim.lr_scheduler.ExponentialLR(opt_gen, gamma=0.999)
 scheduler_dis = torch.optim.lr_scheduler.ExponentialLR(opt_dis, gamma=0.999)
 a = scheduler_gen.get_last_lr()
 loss = nn.BCELoss()
-writer = Writer('img_gen', 'first_run', cfg)
+writer = Writer('img_gen', 'big_run', cfg)
 
 img_list = []
 G_losses = []
