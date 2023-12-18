@@ -54,7 +54,7 @@ epochs = cfg['trainer']['epochs']
 len_epoch = cfg['trainer']['len_epoch']
 lat_size = cfg['model']['args']['latent_channels']
 
-for i in range(1, epochs+1):
+for i in range(epochs):
     for j, batch in tqdm(enumerate(dataloader), total=len_epoch):
         # DisLoss
         opt_dis.zero_grad()
@@ -97,7 +97,9 @@ for i in range(1, epochs+1):
             break
     scheduler_dis.step()
     scheduler_gen.step()
-    save_model(i, gen, dis, opt_gen, opt_dis, cfg)
-       
+    if i % 5 == 0:
+        save_model(i, gen, dis, opt_gen, opt_dis, cfg)
+
+save_model(i, gen, dis, opt_gen, opt_dis, cfg)  
 
 

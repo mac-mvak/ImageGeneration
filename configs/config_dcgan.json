@@ -14,8 +14,9 @@
     },
 
     "trainer" : {
-        "epochs": 100,
-        "len_epoch": 20,
-        "save_path": "saved/dcgan/1"
+        "epochs": 500,
+        "len_epoch": 5000,
+        "save_path": "saved/dcgan/1/",
+        "save_step": 5
     }
 }

@@ -8,7 +8,7 @@ def inf_loop(data_loader):
         yield from loader
 
 def save_model(i, gen, dis, opt_gen, opt_dis, cfg):
-    name_save = cfg['trainer']['save_path'] + f'epoch_{i}.pth'
+    name_save = cfg['trainer']['save_path'] + f'/epoch_{i}.pth'
     state = {
             "epoch": i,
             "state_dict_gen": gen.state_dict(),
