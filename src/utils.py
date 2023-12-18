@@ -17,3 +17,4 @@ def save_model(i, gen, dis, opt_gen, opt_dis, cfg):
             "opt_dis": opt_dis.state_dict()
         }
     torch.save(state, name_save)
+    print(f'model_saved epoch={i}')
