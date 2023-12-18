@@ -3,3 +3,6 @@ data
 saved
 __pycache__
 training.ipynb
+.vscode
+test.ipynb
+

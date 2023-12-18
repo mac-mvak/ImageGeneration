@@ -5,7 +5,8 @@ from src.utils import inf_loop, save_model
 from tqdm import tqdm
 import torch.nn as nn
 from src.logger import Writer
-
+from src.metrics import FIDCalc, create_gen_folder
+from piq import FID
 import torchvision.datasets as dset
 import torch
 
@@ -53,6 +54,9 @@ D_losses = []
 epochs = cfg['trainer']['epochs']
 len_epoch = cfg['trainer']['len_epoch']
 lat_size = cfg['model']['args']['latent_channels']
+const_z = torch.randn(2000, lat_size, device=device)
+fid_metric = FID().to(device)
+
 
 for i in range(epochs):
     for j, batch in tqdm(enumerate(dataloader), total=len_epoch):
@@ -99,6 +103,10 @@ for i in range(epochs):
     scheduler_gen.step()
     if i % 5 == 0:
         save_model(i, gen, dis, opt_gen, opt_dis, cfg)
+    ssim = create_gen_folder(gen, lat_size, device, const_z)
+    fid = FIDCalc(fid_metric)
+    writer.log({'SSIM': errD.item(), 
+                    'FID': fid})
 
 save_model(i, gen, dis, opt_gen, opt_dis, cfg)  
 
