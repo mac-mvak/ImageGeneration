@@ -93,10 +93,10 @@ for i in range(1, epochs+1):
                     'D_G_z2': D_G_z2,
                     'gen_lr': scheduler_gen.get_last_lr()[0],
                     'dis_lr': scheduler_dis.get_last_lr()[0]})
-        scheduler_dis.step()
-        scheduler_gen.step()
         if j + 1 == len_epoch:
             break
+    scheduler_dis.step()
+    scheduler_gen.step()
     save_model(i, gen, dis, opt_gen, opt_dis, cfg)
        
 
